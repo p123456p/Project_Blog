@@ -412,118 +412,6 @@ class Logout(BlogHandler):
         self.redirect('/signup')
 
 
-# Handler for adding comments
-class AddComment(Handler):
-    def post(self, post_id):
-        user = self.logged()
-
-        key = db.Key.from_path('Posts', int(post_id), parent=posts_key())
-        post = db.get(key)
-
-        if not post:
-            self.write("Error 404")
-            return
-
-        if user:
-            comment = self.request.get('comment')
-            if comment:
-                comment.replace('\n', '<br>')
-                newComment = Comments(parent=key,
-                                      username=user,
-                                      content=comment)
-                newComment.put()
-                self.redirect('/post/%s' % str(post.key().id()))
-            else:
-                self.redirect('/post/%s?error=Empty Comment' % str(post_id))
-        else:
-            self.redirect("""/post/%s?error=Please Login to comment on the
-            post.""" % str(post_id))
-
-
-# Handler for Deleting comment
-class DeleteComment(Handler):
-    def get(self, post_id, comment_id):
-        user = self.logged()
-        if user:
-            key = db.Key.from_path('Posts', int(post_id), parent=posts_key())
-            post = db.get(key)
-
-            if not post:
-                self.write("Error 404")
-                return
-
-            comment_key = db.Key.from_path('Comments',
-                                           int(comment_id), parent=key)
-            comment = db.get(comment_key)
-
-            if user == comment.username or user == 'admin':
-                comment.delete()
-                self.redirect('/post/%s' % str(post_id))
-
-            else:
-                self.redirect("""/post/%s?error=You can only delete
-                your own comment""" % str(post_id))
-
-        else:
-            self.redirect("""/post/%s?error=Please Login to
-            delete your comment""" % str(post_id))
-
-
-# Handler for Editing comment
-class EditComment(Handler):
-    def get(self, post_id, comment_id):
-        user = self.logged()
-        if user:
-            key = db.Key.from_path('Posts', int(post_id), parent=posts_key())
-            post = db.get(key)
-
-            if not post:
-                self.write("Error 404")
-                return
-
-            comment_key = db.Key.from_path('Comments',
-                                           int(comment_id), parent=key)
-            comment = db.get(comment_key)
-
-            if user == comment.username or user == 'admin':
-                self.render("post_detail.html", user=user, post=post,
-                            postcomment=comment.content,
-                            comment=comment)
-
-            else:
-                self.redirect("""/post/%s?error=You can only edit
-                your own comment.""" % str(post_id))
-        else:
-            self.redirect("""/post/%s?error=Please login to
-            edit your comment.""" % str(post_id))
-
-    def post(self, post_id, comment_id):
-        user = self.logged()
-
-        key = db.Key.from_path('Posts', int(post_id), parent=posts_key())
-        post = db.get(key)
-
-        if not post:
-            self.write("Error 404")
-            return
-
-        comment_key = db.Key.from_path('Comments', int(comment_id), parent=key)
-        comment = db.get(comment_key)
-
-        if user == comment.username or user == 'admin':
-            content = self.request.get('comment')
-            if content:
-                content.replace('\n', '<br>')
-                comment.content = content
-                comment.put()
-                self.redirect('/post/%s' % str(post.key().id()))
-            else:
-                self.redirect("""/post/%s?error=Empty
-                Comment""" % str(post_id))
-        else:
-            self.redirect("""/post/%s?error=You can only
-            edit your own comment.""" % str(post_id))
-
 app = webapp2.WSGIApplication([
     ('/', BlogFront),
     ('/post/([0-9]+)', PostPage),
@@ -533,8 +421,5 @@ app = webapp2.WSGIApplication([
     ('/newpost', NewPost),
     ('/signup', Register),
     ('/login', Login),
-    ('/logout', Logout),
-    ('/addcomment/(\d+)', AddComment),
-    ('/deletecomment/(\d+)/(\d+)', DeleteComment),
-    ('/editcomment/(\d+)/(\d+)', EditComment)
+    ('/logout', Logout)
 ], debug=True)
