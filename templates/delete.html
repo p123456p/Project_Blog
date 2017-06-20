@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<br>
+  {% if err %}
+      <div>
+        <p>{{err}}</p>
+      </div>
+
+  {% else %}
+        <div>
+          <p> Your Post Has Been Successfully Deleted</p>
+        </div>
+  {% endif %}
+
+{% endblock %}

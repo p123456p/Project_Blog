@@ -1,0 +1,25 @@
+
+<div class="post">
+  <div class="post-heading">
+    <div class="post-title">
+      {{p.title}}
+    </div>
+
+    <div class="post-content">
+      {{p._render_text | safe}}
+    </div>
+  </div>
+
+  <div class="post-date">
+   {{p.created.strftime("%b %d, %Y")}}
+ </div>
+    <br>
+     <input type="button" value="Like" class="btn" onclick="window.location.href='/like/{{p.key().id()}}'"/>
+
+
+      <input type="button" value="Edit" class="btn" onclick="window.location.href='/edit/{{p.key().id()}}'" />
+
+      <input type="button" value="Delete" class="btn" onclick="window.location.href='/delete/{{p.key().id()}}'" />
+      <a style="color:grey;position:fixed;top:0;left:0" href="/">Home</a>
+
+</div>

@@ -1,0 +1,35 @@
+<!-- <link href="/static/testing.css" rel="stylesheet"> -->
+<!-- <link href="/static/login.css" rel="stylesheet"> -->
+<link href="/static/btn.css" rel="stylesheet">
+<script src="/static/jquery.js"></script>
+
+{% extends "base.html" %}
+
+{% block content %}
+
+ <form method="post">
+    <div>
+      <label><strong>Title</strong></label>
+      <input type="text" name="title" value="{{title}}">
+    </div>
+    <div>
+      <label><strong>Content</strong></label>
+      <textarea  name="content">{{content}}</textarea>
+    </div>
+
+    {% if error %}
+      <div>
+        {{error}}
+      </div>
+    {% endif %}
+
+    <button type="submit">Submit</button>
+
+  </form>
+  <div style="position:absolute;top:0;right:0;">
+    <a style="color:gray" href="/logout">LogOut</a>
+  </div>
+
+{% endblock %}
+
+<script src="/static/login.js"></script>

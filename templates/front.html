@@ -1,0 +1,29 @@
+{%  extends "base.html"  %}
+
+{%  block content  %}
+      <h2>Welcome {{username}}...!</h2>
+      {% if posts %}
+            {% for post in posts %}
+              <!-- {{  post.render() | safe  }} -->
+              <a style="color:grey" href="/post/{{post.key().id()}}">{{ post.title | safe }}</a>
+              <br>
+              {{post.likes|length}} Likes
+              <br><br>
+            {% endfor %}
+      {% else %}
+              <div>
+              <p>Sorry! , no post available...!</p>
+              </div>
+      {% endif %}
+      <input type="button" value="New Impression" style="color:black;background-color:grey;width:150px" class="btn" onclick="window.location.href='/newpost'"/>
+{% if user %}
+  <div style="position:absolute;top:0;right:0;">
+    <a style="color:grey" href="/logout">LogOut</a>
+  </div>
+{% else %}
+      <div style="position:absolute;top:0;right:0;">
+        <a style="color:grey" href="/signup">Signup</a>
+		<a style="color:grey" href="/login">Login</a>
+      </div>
+{% endif %}
+{% endblock %}

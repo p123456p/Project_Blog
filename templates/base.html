@@ -1,0 +1,24 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <link type="text/css" rel="stylesheet", href="/static/main.css" />
+    <link type="text/css" rel="stylesheet", href="/static/footer.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <title style="color:#A9A9A9">BLOG</title>
+  </head>
+  <body>
+    <a href = "/" class="main-title">
+      MY BLOG
+    </a>
+
+      <div id="content">
+      {% block content %}
+      {% endblock %}
+     </div>
+     <footer>
+       <span>
+  Welcome to my Blog       </span>
+     </footer>
+  </body>
+</html>

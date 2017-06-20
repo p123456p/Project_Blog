@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+  {% if post %}
+    {{ post.render() | safe }}
+  {% else %}
+    <div>
+      <p>Sorry! , no post available...!</p>
+    </div>
+  {% endif %}
+{% endblock %}

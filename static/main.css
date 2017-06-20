@@ -1,0 +1,101 @@
+body{
+  background-color: black;
+  color: #A9A9A9;
+  /*font-family: sans-serif;
+  width: 800px;
+  margin: 0 auto;
+  padding: 10px;*/
+}
+
+form{
+  width: 550px;
+  height: 250px;
+  margin: 250px auto;
+}
+input{
+  margin-left: 2vw;
+  border-bottom: 2px solid #95a5a6;
+}
+.button
+{
+  border-radius: 4px;
+  color: #16a085;
+}
+label{
+  color: #16a085;
+  /*display: block;
+  font-size: 20px;*/
+}
+.input-div{
+  float: right;
+}
+
+.error {
+  float: right;
+  margin: 0 0 0 10px;
+}
+
+.main-title {
+  display: block;
+  color: #222;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 50px;
+  text-decoration: none;
+}
+
+textarea {
+  margin-top: 2em;
+}
+
+.btn {
+    display:inline-flex;
+    width: 80px;
+    height: 35px;
+    background: #4E9CAF;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+/*h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.error {
+  color: red;
+}
+
+input[type=text] {
+  width: 500px;
+  height: 400px
+  font-size: 20px;
+}
+
+
+.post + .post {
+  margin-top: 15px;
+}
+.post-heading {
+  position: relative;
+  border-bottom: 3px solid #666;
+}
+
+.post-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.post-date {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  color: #999;
+}
+.post-content {
+  margin-top: 5px;
+}*/
