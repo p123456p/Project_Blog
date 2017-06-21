@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content%}
+<h2>Comment</h2>
+<form method="post">
+  <textarea class ="content" name="comment">{{content | safe}}</textarea>
+  <div id="editcommentButtons">
+    <input type="submit" class= "btn btn-primary btn-default-md"name="submit" ></input>
+    <a class= "btn btn-primary btn-default-lg" href="/" role = "button">Back</a>
+  </div>
+</form>
+{% endblock %}
