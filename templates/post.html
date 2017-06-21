@@ -17,22 +17,17 @@
      <input type="button" value="Like" class="btn" onclick="window.location.href='/like/{{p.key().id()}}'"/>
 
 
-     <input type="button" value="Edit" class="btn" onclick="window.location.href='/edit/{{p.key().id()}}'" />
+      <input type="button" value="Edit" class="btn" onclick="window.location.href='/edit/{{p.key().id()}}'" />
 
-     <input type="button" value="Delete" class="btn" onclick="window.location.href='/delete/{{p.key().id()}}'" />
+      <input type="button" value="Delete" class="btn" onclick="window.location.href='/delete/{{p.key().id()}}'" />
+	 
+	 <div id="commentButtons">
+          <a class= "btn btn-primary btn-default-md" href="/editcomment/{{post.key().id()}} / {{ comment.key().id() }}">AddComment</a>
+          <a class= "btn btn-primary btn-default-md" href="/deletecomment/{{post.key().id()}} / {{ comment.key().id() }}">DeleteComment</a>
+     </div>
 	  
-     <form id="post-comment" method="post" action="/addcomment/{{ post.key().id() }}">
-	 <div class="input-field col s8 m10">
-                                    <textarea id="comment" name="comment" class="materialize-textarea textarea-nopadding black-text" rows="0"></textarea>
-                                    <label for="comment" class="label-font black-text">Leave Comment</label>
-                                </div>
-                                <div class="col s4 m2">
-                                    <button type="button" onclick="validate_new_comment()" >
-                              
-                                    </button>
-                                </div>
-     </form>
-     <a style="color:grey;position:fixed;top:0;left:0" href="/">Home</a>
+	  
+	  
+      <a style="color:grey;position:fixed;top:0;left:0" href="/">Home</a>
 
 </div>
-
